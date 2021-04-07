@@ -1,6 +1,7 @@
 const db = require("../models");
 
 module.exports = function(app) {
+  // get all workout history
   app.get("/api/workouts", function(req, res) {
     db.Workout.find({}).then(function(dbWorkouts) {
       res.json(dbWorkouts);
@@ -19,8 +20,8 @@ module.exports = function(app) {
         console.log(newWorkout);
         res.json(newWorkout);
       })
-      .catch(result => {
-        console.log(result);
+      .catch(message => {
+        console.log(message);
       });
   });
 
@@ -28,14 +29,13 @@ module.exports = function(app) {
   app.put("/api/workouts/:id", function(req, res) {
     db.Workout.update(
       { _id: req.params.id },
-      { exercises: req.body }
+      { $push: { exercises: req.body } }
     ).then(function(dbWorkouts) {
       res.json(dbWorkouts);
     })
-    .catch(({ message }) => {
+    .catch(( message ) => {
       console.log(message);
     });
-  
   });
 
 };
