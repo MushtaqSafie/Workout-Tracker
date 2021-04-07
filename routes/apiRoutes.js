@@ -13,6 +13,27 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/api/workouts", function(req, res) {
+    db.Workout.create(req.body).then(dbNewWorkout => {
+      console.log(dbNewWorkout);
+      res.josn(dbNewWorkout);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+    });
+  
+  });
+
+  app.put("/api/workouts", function(req, res) {
+    db.Workout.create(req.body).then(dbNewWorkout => {
+      console.log(dbNewWorkout);
+      res.josn(dbNewWorkout);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+    });
+  
+  });
   // app.put("/api/images/:id", function(req, res) {
   //   db.Image.updateOne(
   //     { _id: req.params.id },
