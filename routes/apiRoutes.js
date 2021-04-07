@@ -3,13 +3,19 @@ const db = require("../models");
 module.exports = function(app) {
   // get all workout history
   app.get("/api/workouts", function(req, res) {
-    db.Workout.find({}).then(function(dbWorkouts) {
+    db.Workout.aggregate([
+      {
+        $addFields: { totalDuration: { $sum: "$exercises.duration" }}
+      },
+      { $sort: { day: 1 } }
+    ]).then(dbWorkouts => {
+      console.log(dbWorkouts);
       res.json(dbWorkouts);
     });
   });
 
   app.get("/api/workouts/range", function(req, res) {
-    db.Workout.find({}).then(function(dbWorkouts) {
+    db.Workout.find({}).then(dbWorkouts => {
       res.json(dbWorkouts);
     });
   });
@@ -30,7 +36,7 @@ module.exports = function(app) {
     db.Workout.update(
       { _id: req.params.id },
       { $push: { exercises: req.body } }
-    ).then(function(dbWorkouts) {
+    ).then(dbWorkouts => {
       res.json(dbWorkouts);
     })
     .catch(( message ) => {
