@@ -10,7 +10,6 @@ module.exports = function(app) {
       },
       { $sort: { day: 1 } }
     ]).then(dbWorkouts => {
-      console.log(dbWorkouts);
       res.json(dbWorkouts);
     });
   });
@@ -56,16 +55,17 @@ module.exports = function(app) {
   ]).limit(7)
 
     .then(dbWorkouts => {
+
       res.json(dbWorkouts);
     });
   });
 
-
+// let y = new Date("2021-03-30T16:12:34.779Z");
+// console.log(new Date(y.setHours(0,0,0,0)));
 
   // create new workout request
   app.post("/api/workouts", function(req, res) {
     db.Workout.create(req).then(newWorkout => {
-        console.log(newWorkout);
         res.json(newWorkout);
       })
       .catch(message => {
