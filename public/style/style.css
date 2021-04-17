@@ -306,6 +306,12 @@ button {
   float: left;
 }
 
+.histroyIcon {
+  float: right;
+  width: 45px;
+  margin-right: 5px;
+}
+
 /*
 
 .ui.card, .ui.cards > .card {
