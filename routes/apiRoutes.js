@@ -14,7 +14,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/workouts/range/:Range", function(req, res) {
+  app.get("/api/workouts/range", function(req, res) {
   // group workout by day, if there is more than one workout in the same day so to combine the exercise for that day
   db.Workout.aggregate([
     // group by day Date and push exercise array into one   e.g [[""],[""],["",""]]
@@ -53,7 +53,7 @@ module.exports = function(app) {
     },
     // descending order
     { $sort: { day: -1 } }
-  ]).limit(Number(req.params.Range))
+  ]).limit(Number(7))
 
     .then(dbWorkouts => {
       res.json(dbWorkouts.reverse());
