@@ -1,4 +1,15 @@
 const API = {
+  async getAllWorkout() {
+    let res;
+    try {
+      res = await fetch("/api/workouts");
+    } catch (err) {
+      console.log(err)
+    }
+    const json = await res.json();
+
+    return json;
+  },
   async getLastWorkout() {
     let res;
     try {

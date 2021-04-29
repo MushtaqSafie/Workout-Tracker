@@ -1,105 +1,77 @@
 
 // render workout history html cards
 const historyDiv = document.getElementById("historyList");
-console.log(historyDiv);
-historyDiv.innerHTML = '<h1>helo</h1>';
+// console.log(historyDiv);
+historyDiv.innerHTML = '<h1>There no workout record excited yet!</h1>';
+
+function dateConverter(date) {
+  const newDate = new Date(date);
+  const yyyy = newDate.getFullYear();
+  const mm = newDate.getMonth()+1;
+  const dd = newDate.getDate();
+  const result = `${yyyy}-${mm}-${dd}`;
+  return result
+}
+
 
 function renderHTML(data) {
-  // console.log(data);
-  // console.log(historyDiv);
-//   let x = `            <div class="card-header">
-//   <h2>Workouts of 2021-03-29 <span class="badge badge-secondary">24min</span></h2>
-// </div>`
-  // for (i = 0; i < data.length; i++) {
+  data = data.reverse();
 
-  // }
   let HTML = "";
   data.forEach(workout => {
-    HTML += `
-    <div class="row">
-    <div class="col-md-12">
+    if (!workout.exercises.length == 0) {
+      console.log(workout);
+      const newDate = dateConverter(workout.day);
+      HTML += `
+      <div class="row">
+      <div class="col-md-12">
       <div class="card bg-light mb-3">
-        <div class="card-header">
-          <h2>Workouts of ${workout.day} <span class="badge badge-secondary">${workout.totalDuration}min</span></h2>
-        </div>
-        <div class="card-body">
-    `
-    // Resistance Table
-    HTML += `
-    <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Resistance</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Reps</th>
-        <th scope="col">Sets</th>
-      </tr>
-    </thead>
-    <tbody>
-    `
+      <div class="card-header">
+      <h2>Workout ${newDate} <span class="badge badge-secondary">${workout.totalDuration}min</span></h2>
+      </div>
+      <div class="card-body">`
 
-    workout.exercises.forEach(exercise => {
-      // console.log(exercise);
-      if (exercise.type == "resistance") {
-        // Resistance Table
-        HTML += `
-          <tr>
-            <th scope="row">resistance: ${exercise.name}</th>
-            <td>${exercise.duration}</td>
-            <td>${exercise.weight}</td>
-            <td>${exercise.reps}</td>
-            <td>${exercise.sets}</td>
-          </tr>
+      // Resistance Table
+      HTML += `
+      <table class="table table-striped"><tbody>`
 
-    
-        `
-      } 
-    });
-
-    HTML += `
-    </tbody>
-    </table><br>
-    <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Cardio</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Distance</th>
-      </tr>
-    </thead>
-    <tbody>
-    `
-    workout.exercises.forEach(exercise => {
-      // console.log(exercise);
-      if (exercise.type == "cardio") {
-        // Cardio table
-        HTML += `
+      workout.exercises.forEach(exercise => {
+        // console.log(exercise);
+        if (exercise.type == "resistance") {
+          // Resistance Table
+          HTML += `
             <tr>
-              <th scope="row">Cardio: ${exercise.name}</th>
-              <td>25</td>
-              <td>10</td>
-            </tr>
-        `
-      }
-    });
+              <th scope="row">Resistance: ${exercise.name}</th>
+              <td>Duration: ${exercise.duration}</td>
+              <td>Weight: ${exercise.weight}</td>
+              <td>Reps: ${exercise.reps}</td>
+              <td>Sets: ${exercise.sets}</td>
+            </tr>`
+        } 
+      });
 
-    HTML += `
-    </tbody>
-    </table><br>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    `
+      HTML += `
+      </tbody>
+      </table><br>
+      <table class="table table-striped"><tbody>`
+      workout.exercises.forEach(exercise => {
+        // console.log(exercise);
+        if (exercise.type == "cardio") {
+          // Cardio table
+          HTML += `
+          <tr>
+            <th scope="row">Cardio: ${exercise.name}</th>
+            <td>Duration: ${exercise.duration}</td>
+            <td>Distance: ${exercise.distance}</td>
+          </tr>`
+        }
+      });
+
+      HTML += `</tbody></table><br></div></div></div></div></div>`
+    }
   });
-
-  console.log(HTML);
-
   historyDiv.innerHTML = HTML;
-
 }
 
 // get all workout data from back-end
-API.getWorkoutsInRange().then(renderHTML);
+API.getAllWorkout().then(renderHTML);

@@ -13,7 +13,7 @@ body,
 }
 
 body {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 nav {
@@ -23,6 +23,10 @@ nav {
   padding: 10px;
   line-height: 3;
   font-size: 1.2rem;
+}
+
+nav a{
+  font-size: 16px;
 }
 
 a,
@@ -304,6 +308,7 @@ button {
 .icon {
   width: 150px;
   float: left;
+  margin-top: 4px;
 }
 
 .histroyIcon {
@@ -312,18 +317,4 @@ button {
   margin-right: 5px;
 }
 
-/*
 
-.ui.card, .ui.cards > .card {
-  border-radius: 20px;
-  background: #ecf0f3;
-  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
-}
-
-.ui.blue.button, .ui.blue.buttons .button,
-.ui.positive.button, .ui.positive.buttons {
-  padding-bottom: 0.685714em;
-  border-radius: 20px;
-  box-shadow: 3px 3px 8px #b1b1b1;
-}
- */
