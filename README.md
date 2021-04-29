@@ -6,7 +6,7 @@ Workout Tracker is an express application build with Node.js & mongoDB.
 ### User Story
 As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
 
-### Deployed application
+### Deployed application Link
 > [Workout Tracker](https://workout-tracker841.herokuapp.com/)
 
 ## Table of Contents
@@ -23,6 +23,8 @@ As a user, I want to be able to view create and track daily workouts. I want to 
 ## ScreenShot
 ![ScreenShot1]()
 ![ScreenShot2]()
+![ScreenShot3]()
+![ScreenShot4]()
 
 ## Questions
 **My GitHub Profile**: [MushtaqSafie](https://github.com/MushtaqSafie)
