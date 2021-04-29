@@ -21,10 +21,10 @@ As a user, I want to be able to view create and track daily workouts. I want to 
 * morgan
 
 ## ScreenShot
-![ScreenShot1]()
-![ScreenShot2]()
-![ScreenShot3]()
-![ScreenShot4]()
+![ScreenShot1](https://raw.githubusercontent.com/MushtaqSafie/Workout-Tracker/main/media/1.JPG)s
+![ScreenShot2](https://raw.githubusercontent.com/MushtaqSafie/Workout-Tracker/main/media/2.JPG)
+![ScreenShot3](https://raw.githubusercontent.com/MushtaqSafie/Workout-Tracker/main/media/3.JPG)
+![ScreenShot4](https://raw.githubusercontent.com/MushtaqSafie/Workout-Tracker/main/media/4.JPG)
 
 ## Questions
 **My GitHub Profile**: [MushtaqSafie](https://github.com/MushtaqSafie)
